@@ -1,0 +1,81 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .pemesanan {
+    display: flex;
+    flex-direction: column; /* Mengubah arah layout menjadi vertical */
+    align-items: center; /* Pusatkan elemen di tengah */
+  }
+  
+  .form-pemesanan,
+  .result {
+    width: 100%;
+    margin-bottom: 20px; /* Berikan sedikit ruang antara form dan hasil pesanan */
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .data-pemesanan {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .blok-makanan,
+  .blok-jumlah,
+  .blok-voucher {
+    flex: 1;
+  }
+  
+  label {
+    margin-bottom: 5px;
+  }
+  
+  input,
+  select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .tombol {
+    text-align: center;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .result {
+    border: 1px solid #ddd;
+    padding: 15px;
+  }
+  
+  span {
+    font-weight: bold;
+  }
+  
+  /* Responsive styling */
+  @media screen and (max-width: 600px) {
+    .pemesanan {
+      flex-direction: column;
+    }
+  
+    .form-pemesanan,
+    .result {
+      width: 100%;
+    }
+  }
+  

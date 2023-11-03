@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="pemesanan">
+    <section class="form-pemesanan">
+    </section>
+      <form id="order-form"> <!-- Tambahkan ID "order-form" pada form -->
+        <div class="data-pemesanan">
+          <div class="blok-makanan">
+            <label for="makanan">Makanan : </label>
+            <select name="makanan" id="makanan">
+              <option value="15000">Ketoprak</option>
+              <option value="20000">Kebab</option>
+              <option value="30000">Sushimi</option>
+              <option value="25000">Pecel Lele</option>
+            </select>
+          </div>
+          <div class="blok-jumlah">
+            <label for="jumlah">Jumlah : </label>
+            <input type="number" name="jumlah" id="jumlah" />
+          </div>
+          <div class="blok-voucher">
+            <label for="voucher">Voucher : </label>
+            <input type="text" name="voucher" id="voucher" />
+          </div>
+        </div>
+        <div class="tombol">
+          <button id="submit-button">Submit</button> <!-- Tambahkan ID "submit-button" pada tombol -->
+        </div>
+      </form>
+    </section>
+    <section class="result">
+      <p>Hasil pesanan:</p>
+      <p>Nama: <span id="name"></span></p>
+      <p>Jumlah: <span id="jumlah-desc"></span</p>
+      <p>Diskon: <span id="discount"></span></p>
+      <p>Harga: <span id="harga"></span></p>
+    </section>
+  </section>
+</body>
+<script>
+  // Menambahkan event listener ketika halaman selesai dimuat
+  document.addEventListener("DOMContentLoaded", function () {
+    const orderForm = document.getElementById("order-form");
+    const nameDesc = document.getElementById("name");
+    const jumlahDesc = document.getElementById("jumlah-desc");
+    const discountDesc = document.getElementById("discount");
+    const hargaDesc = document.getElementById("harga");
+
+    orderForm.addEventListener("submit", function (event) {
+      event.preventDefault(); // Mencegah form untuk melakukan submit bawaan
+
+      // Mendapatkan nilai yang dipilih dari elemen form
+      const makananValue = parseInt(document.getElementById("makanan").value, 10);
+      const jumlahValue = parseInt(document.getElementById("jumlah").value, 10);
+      const voucherValue = document.getElementById("voucher").value;
+
+      // Logika pemrosesan data
+      let nama = "";
+      let totalDiscount = 0;
+      
+      if (makananValue === 15000) {
+        nama = "Ketoprak";
+      } else if (makananValue === 20000) {
+        nama = "Kebab";
+      } else if (makananValue === 30000) {
+        nama = "Sushimi";
+      } else if (makananValue === 25000) {
+        nama = "Pecel Lele";
+      }
+
+      if (voucherValue === "AOMATTEBET") {
+        totalDiscount = 0.2;
+      }
+
+      let totalHarga = makananValue * jumlahValue;
+      totalDiscount *= totalHarga;
+      totalHarga -= totalDiscount;
+
+      // Menampilkan hasil ke dalam elemen di halaman
+      nameDesc.textContent = nama;
+      jumlahDesc.textContent = jumlahValue;
+      discountDesc.textContent = totalDiscount;
+      hargaDesc.textContent = totalHarga;
+    });
+  });
+</script>
+</html>
