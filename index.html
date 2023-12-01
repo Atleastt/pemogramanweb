@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Nilai Mata Kuliah</title>
+</head>
+<body>
+<h2> Form Input Mata Kuliah</h2>
+<h3> Aom Rizky Wiratanu 105221010</h3>
+<form action="perhitungan.php".php" method="POST" id="nilaiForm">
+    <!-- Initial input field for Mata Kuliah 1 -->
+    <div id="mataKuliahGroup1">
+        <label for="nilai_mk1">Nilai Mata Kuliah 1:</label>
+        <input type="number" name="nilai_mk[]" required>
+    </div>
+    <button type="button" onclick="tambahMataKuliah()">Tambah Mata Kuliah</button>
+    <br><br>
+    <button type="submit">Hitung IPK</button>
+</form>
+
+<script>
+var counter = 1;
+
+function tambahMataKuliah() {
+    if (counter < 100) { // Limit the addition to 100 fields
+        counter++;
+
+        var group = document.createElement("div");
+        group.id = "mataKuliahGroup" + counter;
+
+        var label = document.createElement("label");
+        label.setAttribute("for", "nilai_mk" + counter);
+        label.textContent = "Nilai Mata Kuliah " + counter + ":";
+
+        var input = document.createElement("input");
+        input.type = "number";
+        input.name = "nilai_mk[]";
+        input.id = "nilai_mk" + counter;
+        input.required = true;
+
+        group.appendChild(label);
+        group.appendChild(input);
+
+        document.getElementById('nilaiForm').insertBefore(group, document.querySelector('button'));
+    }
+}
+</script>
+
+</body>
+</html>
